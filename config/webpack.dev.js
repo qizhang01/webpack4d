@@ -1,14 +1,9 @@
-const path = require('path');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const webpack = require('webpack');
 const portfinder = require('portfinder');
 const config = require('./config');
-const getClientEnvironment = require('./env');
-
-const env = getClientEnvironment(config.publicPath);
 
 const devWebpackConfig = merge.smart(baseWebpackConfig, {
     mode: 'development',
@@ -30,7 +25,7 @@ const devWebpackConfig = merge.smart(baseWebpackConfig, {
             },
             hash: false
         }),
-        new InterpolateHtmlPlugin(env.raw),
+
         new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {

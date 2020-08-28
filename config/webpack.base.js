@@ -1,5 +1,5 @@
 const path = require('path');
-const argv = require('yargs').argv;
+// const argv = require('yargs').argv;
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,19 +12,19 @@ const getClientEnvironment = require('./env');
 
 const APP_PATH = path.resolve(__dirname, '../src');
 
-const bundleAnalyzerReport = argv.report;
-const env = getClientEnvironment(config.publicPath);
+// const bundleAnalyzerReport = argv.report;
+// const env = getClientEnvironment(config.publicPath);
 
 const webpackConfig = {
     plugins: []
 };
-if (bundleAnalyzerReport) {
-    webpackConfig.plugins.push(new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        openAnalyzer: false,
-        reportFilename: path.join(config.assetsRoot, './report.html')
-    }));
-}
+// if (bundleAnalyzerReport) {
+//     webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+//         analyzerMode: 'static',
+//         openAnalyzer: false,
+//         reportFilename: path.join(config.assetsRoot, './report.html')
+//     }));
+// }
 
 module.exports = merge(webpackConfig, {
     devtool: 'cheap-module-eval-source-map',
@@ -150,9 +150,9 @@ module.exports = merge(webpackConfig, {
         }),
         // 在html模板中能够使用环境变量
         // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-        new InterpolateHtmlPlugin(env.raw),
+        new InterpolateHtmlPlugin({ PUBLIC_URL: "/" }),
         // 在js代码中能够使用环境变量(demo: process.env.NODE_ENV === 'production')
-        new webpack.DefinePlugin(env.stringified),
+        // new webpack.DefinePlugin(env.stringified),
         // 忽略moment的国际化库
         // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         new CopyWebpackPlugin([
