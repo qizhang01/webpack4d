@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Input, Button, Space } from 'antd'
+import React, { useReducer } from 'react'
+import { Input, Button } from 'antd'
 import { Auth } from '@/auth'
 import { RouteUri } from '@/router/config'
 import './index.less'
@@ -87,17 +87,17 @@ const Login: React.FC = () => {
                 <section>
                     <Input
                         bordered={false}
-                        placeholder="Enter username"
+                        placeholder="请输入用户名"
                         onChange={setAccount.setUsername}
                     />
                     <Input
                         bordered={false}
-                        placeholder="Enter password"
+                        placeholder="请输入密码"
                         onChange={setAccount.setPassword}
                     />
 
                     <Button block={true} loading={formData.loading} onClick={setAccount.onSubmit}>
-                        Login in
+                        登 录
                     </Button>
                 </section>
             </div>
