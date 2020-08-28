@@ -14,7 +14,6 @@ const devWebpackConfig = merge.smart(baseWebpackConfig, {
     mode: 'development',
     output: {
         filename: 'js/[name].[hash:8].js',
-        publicPath: config.publicPath
     },
     module: {
         rules: [

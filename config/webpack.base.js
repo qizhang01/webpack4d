@@ -35,7 +35,6 @@ module.exports = merge(webpackConfig, {
     output: {
         filename: 'js/[name].bundle.js',
         path: config.assetsRoot,
-        publicPath: config.publicPath
     },
     module: {
         rules: [
