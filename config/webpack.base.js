@@ -1,5 +1,4 @@
 const path = require('path');
-// const argv = require('yargs').argv;
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,12 +7,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('./config');
-const getClientEnvironment = require('./env');
 
 const APP_PATH = path.resolve(__dirname, '../src');
 
 // const bundleAnalyzerReport = argv.report;
-// const env = getClientEnvironment(config.publicPath);
 
 const webpackConfig = {
     plugins: []
