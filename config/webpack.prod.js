@@ -1,7 +1,6 @@
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -9,15 +8,12 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const config = require('./config');
-const getClientEnvironment = require('./env');
 
 const productionGzipExtensions = ['js', 'css'];
-const sourceMapsMode = config.productionJsSourceMap ? 'source-map' : 'none';
-const env = getClientEnvironment(config.publicPath);
 
 module.exports = merge.smart(baseWebpackConfig, {
     mode: 'production',
-    devtool: sourceMapsMode,
+    devtool: 'none',
     output: {
         filename: 'js/[name].[contenthash:8].js',
     },
@@ -79,7 +75,6 @@ module.exports = merge.smart(baseWebpackConfig, {
                 minifyURLs: true,
             }
         }),
-        new InterpolateHtmlPlugin(env.raw),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css'
             // chunkFilename: '[name].[contenthash:8].chunk.css'
