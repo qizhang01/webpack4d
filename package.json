@@ -100,12 +100,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
+
   "lint-staged": {
     "src/**/*.{jsx,js,tsx,ts}": [
       "prettier --write",
