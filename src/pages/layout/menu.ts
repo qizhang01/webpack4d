@@ -19,7 +19,7 @@ export const menuNav: IMenuNav[] = [
                 uri: RouteUri.PageSub1,
             },
             {
-                title: 'Mobx class',
+                title: '赠险二位码生成',
                 uri: RouteUri.PageSub2,
             },
         ],

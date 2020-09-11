@@ -30,15 +30,12 @@ const AppLayout: React.FC<routeProps> = (routeProps: routeProps) => {
     const NavSubMenu = (nav: IMenuNav) => {
         return (
             <SubMenu key={nav.uri} title={nav.title}>
-                {nav.children &&
-                    nav.children.map(value => {
-                        return NavMenu(value)
-                    })}
+                {nav.children && nav.children.map(value => NavMenu(value))}
             </SubMenu>
         )
     }
 
-    function logout() {
+    const logout = () => {
         Auth.cleanAuth()
     }
 
@@ -72,8 +69,7 @@ const AppLayout: React.FC<routeProps> = (routeProps: routeProps) => {
 
             <Layout className="layout-warpper-content">
                 <Header>
-                    <span>xxx xxxx xxxx</span>
-                    <Button onClick={() => logout()}>Logout</Button>
+                    <Button onClick={logout}>退出</Button>
                 </Header>
 
                 <Content>{RenderRoutes(routes, true)}</Content>

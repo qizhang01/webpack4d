@@ -34,6 +34,7 @@ module.exports = merge(webpackConfig, {
         path: config.assetsRoot,
     },
     module: {
+        noParse: '/jquery|lodash/',  // 不去解析三方库
         rules: [
             // 把这个配置放在所有loader之前
             {
@@ -139,12 +140,7 @@ module.exports = merge(webpackConfig, {
             template: config.indexPath,
             showErrors: true
         }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            template: config.enIndexPath,
-            filename: 'en/index.html',
-            showErrors: true
-        }),
+
         // 在html模板中能够使用环境变量
         // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
         new InterpolateHtmlPlugin({ PUBLIC_URL: "/" }),
