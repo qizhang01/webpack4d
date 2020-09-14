@@ -1570,6 +1570,13 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha1-FZJUFOCtLNdlv+9YhC9+JqesyyQ=
 
+"@types/qrcode.react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/@types/qrcode.react/download/@types/qrcode.react-1.0.1.tgz#0904e7a075a6274a5258f19567b4f64013c159d8"
+  integrity sha1-CQTnoHWmJ0pSWPGVZ7T2QBPBWdg=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^16.9.5":
   version "16.9.8"
   resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
@@ -6289,6 +6296,13 @@ internal-slot@^1.0.2:
     es-abstract "^1.17.0-next.1"
     has "^1.0.3"
     side-channel "^1.0.2"
+
+interpolate-html-plugin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/interpolate-html-plugin/download/interpolate-html-plugin-3.0.0.tgz#5cef4352f1fe7af40eae5389644b30e6bd58f6dd"
+  integrity sha1-XO9DUvH+evQOrlOJZEsw5r1Y9t0=
+  dependencies:
+    escape-string-regexp "^1.0.5"
 
 interpret@^1.4.0:
   version "1.4.0"
