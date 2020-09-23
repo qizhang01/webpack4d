@@ -9,12 +9,14 @@ import {
     Button,
     Upload,
     Checkbox,
+    DatePicker,
     Row,
     Col,
 } from 'antd'
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
 import { Panel } from '@/components/Panel'
 import province from '@/enum/province'
+import cardType from '@/enum/cardType'
 
 const { Option } = Select
 
@@ -49,34 +51,47 @@ const PageSub1: React.FC = () => {
                 }}
             >
                 <Form.Item
-                    name="name"
-                    label="赠险产品名称"
+                    name="title"
+                    label="险种名称"
                     rules={[
                         {
                             required: true,
-                            message: '请输入赠险产品名称',
+                            message: '请输入赠险险种名称',
                         },
                     ]}
                 >
-                    <Input placeholder="请输入赠险产品名称" />
+                    <Input placeholder="请输入赠险险种名称" />
+                </Form.Item>
+
+                <Form.Item
+                    name="planName"
+                    label="计划名称"
+                    rules={[
+                        {
+                            required: true,
+                            message: '请输入赠险计划名称',
+                        },
+                    ]}
+                >
+                    <Input placeholder="请输入赠险计划名称" />
                 </Form.Item>
 
                 <Form.Item
                     name="name"
-                    label="赠险产品编码"
+                    label="险种编码"
                     rules={[
                         {
                             required: true,
-                            message: '请输入赠险产品编码',
+                            message: '请输入险种编码',
                         },
                     ]}
                 >
-                    <Input placeholder="请输入赠险产品编码" />
+                    <Input placeholder="请输入险种编码" />
                 </Form.Item>
 
                 <Form.Item
                     name="name"
-                    label="产品计划编码"
+                    label="计划编码"
                     rules={[
                         {
                             required: true,
@@ -97,7 +112,7 @@ const PageSub1: React.FC = () => {
                         },
                     ]}
                 >
-                    <Input placeholder="请输入保障期限" />
+                    <Input placeholder="请输入保障期限, 比如1年 90天等" />
                 </Form.Item>
 
                 <Form.Item
@@ -113,8 +128,20 @@ const PageSub1: React.FC = () => {
                     <Input placeholder="请输入承保年龄" />
                 </Form.Item>
 
+                <Form.Item name="contorgin" label="子渠道">
+                    <InputNumber min={1} placeholder="请输入子渠道" />
+                </Form.Item>
+
+                <Form.Item label="主渠道来源" name="channel">
+                    <InputNumber min={1} placeholder="请输入主渠道来源" />
+                </Form.Item>
+
                 <Form.Item name="maxNumber" label="限领分数(不填默认为一份)">
                     <Input placeholder="请输入限领分数" />
+                </Form.Item>
+
+                <Form.Item name="activityNum" label="活动总份数">
+                    <Input placeholder="请输入活动总份数" />
                 </Form.Item>
 
                 <Form.Item
@@ -137,12 +164,26 @@ const PageSub1: React.FC = () => {
                     <Switch />
                 </Form.Item>
 
-                <Form.Item name="radio-group" label="Radio.Group">
+                <Form.Item name="socialSecrity" label="是否询问医保情况">
                     <Radio.Group>
-                        <Radio value="a">item 1</Radio>
-                        <Radio value="b">item 2</Radio>
-                        <Radio value="c">item 3</Radio>
+                        <Radio value="socialSecrity_true">是</Radio>
+                        <Radio value="socialSecrity_false">否</Radio>
                     </Radio.Group>
+                </Form.Item>
+
+                <Form.Item
+                    name="End_Date"
+                    label="结束日期"
+                    rules={[{ type: 'object', required: true, message: '请选择活动结束日期' }]}
+                >
+                    <DatePicker />
+                </Form.Item>
+
+                <Form.Item name="normal_duty" label="普通意外责任">
+                    <Input placeholder="请输入金额, 比如1万元" />
+                </Form.Item>
+                <Form.Item name="normal_doctor_duty" label="意外医疗保险责任">
+                    <Input placeholder="请输入金额, 比如5000元" />
                 </Form.Item>
 
                 <Form.Item name="checkbox-group" label="活动省份">
@@ -152,6 +193,25 @@ const PageSub1: React.FC = () => {
                                 <Col span={4} key={item.id}>
                                     <Checkbox value={item.id} style={{ lineHeight: '32px' }}>
                                         {item.name}
+                                    </Checkbox>
+                                </Col>
+                            ))}
+                            <Col span={8}>
+                                <Checkbox value="all" style={{ lineHeight: '32px' }}>
+                                    全部
+                                </Checkbox>
+                            </Col>
+                        </Row>
+                    </Checkbox.Group>
+                </Form.Item>
+
+                <Form.Item name="cardType" label="证件类型">
+                    <Checkbox.Group>
+                        <Row>
+                            {cardType.map(item => (
+                                <Col span={4} key={item.value}>
+                                    <Checkbox value={item.value} style={{ lineHeight: '32px' }}>
+                                        {item.label}
                                     </Checkbox>
                                 </Col>
                             ))}

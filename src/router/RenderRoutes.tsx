@@ -6,6 +6,8 @@ import NoMatch from '@/pages/status/404'
 import Login from '@/pages/login'
 import { RouteUri } from '@/router/config'
 import { Auth } from '@/auth'
+import AnimateSwitch from './animateSwitch'
+import '@/assets/style/animate.less'
 
 export const RenderRoutes = (routes: RouteInterface[] | undefined, authed: boolean) => {
     // 判断是否登录

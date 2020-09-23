@@ -8,11 +8,11 @@ export interface IMenuNav {
 
 export const menuNav: IMenuNav[] = [
     {
-        title: '首页',
+        title: '权限控制',
         uri: RouteUri.Home,
     },
     {
-        title: 'Page1',
+        title: '赠险',
         children: [
             {
                 title: '赠险配置',
@@ -23,5 +23,9 @@ export const menuNav: IMenuNav[] = [
                 uri: RouteUri.PageSub2,
             },
         ],
+    },
+    {
+        title: '开发规范',
+        uri: RouteUri.PageSub3,
     },
 ]

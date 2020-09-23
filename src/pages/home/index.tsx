@@ -20,7 +20,7 @@ const Home: React.FC = () => {
     return (
         <div className="home-wrapper">
             <Button type="primary" onClick={() => onChangeColor()}>
-                Change theme
+                {/* Change theme */}
             </Button>
         </div>
     )

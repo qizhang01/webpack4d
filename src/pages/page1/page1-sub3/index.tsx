@@ -9,10 +9,7 @@ const PageContext: React.FC = () => {
 
     return (
         <>
-            <SizeContext.Provider value={{ count, setCount }}>
-                <h4>根组件 cont: {count}</h4>
-                <PageChild />
-            </SizeContext.Provider>
+            <SizeContext.Provider value={{ count, setCount }}>相关规范</SizeContext.Provider>
         </>
     )
 }
