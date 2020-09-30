@@ -15,8 +15,12 @@ export const menuNav: IMenuNav[] = [
         title: '赠险',
         children: [
             {
-                title: '赠险配置',
+                title: '中台赠险配置',
                 uri: RouteUri.PageSub1,
+            },
+            {
+                title: '个性化赠险配置',
+                uri: RouteUri.PageSub3,
             },
             {
                 title: '赠险二位码生成',
@@ -26,6 +30,6 @@ export const menuNav: IMenuNav[] = [
     },
     {
         title: '开发规范',
-        uri: RouteUri.PageSub3,
+        uri: RouteUri.PageSub5,
     },
 ]
