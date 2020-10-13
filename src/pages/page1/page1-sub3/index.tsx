@@ -23,8 +23,9 @@ const { Option } = Select
 
 const formItemLayout = {
     labelCol: { span: 4 },
-    wrapperCol: { span: 10 },
+    wrapperCol: { span: 8 },
 }
+
 const stl = {
     topic: { marginRight: '10px', fontWeight: 800 },
 }
@@ -187,7 +188,11 @@ const PageSub: React.FC = () => {
                     <DatePicker />
                 </Form.Item>
 
-                <Form.Item name="checkbox-group" label="活动省份">
+                <Form.Item
+                    name="checkbox-group"
+                    label="活动省份"
+                    wrapperCol={{ span: 12, offset: 0 }}
+                >
                     <Checkbox.Group>
                         <Row>
                             {province.map(item => (
@@ -206,7 +211,7 @@ const PageSub: React.FC = () => {
                     </Checkbox.Group>
                 </Form.Item>
 
-                <Form.Item name="cardType" label="证件类型">
+                <Form.Item name="cardType" label="证件类型" wrapperCol={{ span: 16, offset: 0 }}>
                     <Checkbox.Group>
                         <Row>
                             {cardType.map(item => (
@@ -250,13 +255,19 @@ const PageSub: React.FC = () => {
                 </Form.Item>
                 <Form.Item
                     name="upload"
-                    label="Upload"
+                    label="二维码分享图标"
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
                 >
                     <Upload name="logo" action="/upload.do" listType="picture">
                         <Button icon={<UploadOutlined />}>Click to upload</Button>
                     </Upload>
+                </Form.Item>
+                <Form.Item name="EWMTitle" label="二维码标题">
+                    <Input placeholder="请输入二维码标题" />
+                </Form.Item>
+                <Form.Item name="EWMSecondTitle" label="二维码副标题">
+                    <Input placeholder="请输入二维码副标题" />
                 </Form.Item>
 
                 <div style={{ marginTop: 50 }}>

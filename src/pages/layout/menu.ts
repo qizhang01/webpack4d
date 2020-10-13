@@ -8,10 +8,6 @@ export interface IMenuNav {
 
 export const menuNav: IMenuNav[] = [
     {
-        title: '权限控制',
-        uri: RouteUri.Home,
-    },
-    {
         title: '赠险',
         children: [
             {
@@ -26,10 +22,19 @@ export const menuNav: IMenuNav[] = [
                 title: '赠险二位码生成',
                 uri: RouteUri.PageSub2,
             },
+            {
+                title: '配置查询',
+                uri: RouteUri.PageSub4,
+            },
         ],
     },
     {
         title: '开发规范',
         uri: RouteUri.PageSub5,
+    },
+
+    {
+        title: '权限控制',
+        uri: RouteUri.Home,
     },
 ]

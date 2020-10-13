@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { Layout, Menu, Button } from 'antd'
-import { LeftCircleOutlined, RightCircleOutlined, MenuOutlined } from '@ant-design/icons'
 import { RenderRoutes } from '@/router/RenderRoutes'
 import { IMenuNav, menuNav } from '@/pages/layout/menu'
 import { Logo } from '@/assets/images'

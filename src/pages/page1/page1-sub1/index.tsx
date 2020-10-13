@@ -13,18 +13,22 @@ import {
     Row,
     Col,
 } from 'antd'
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
+import { MinusCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons'
 import { Panel } from '@/components/Panel'
 import province from '@/enum/province'
 import cardType from '@/enum/cardType'
-
 const { Option } = Select
 
 const formItemLayout = {
     labelCol: { span: 4 },
-    wrapperCol: { span: 10 },
+    wrapperCol: { span: 8 },
 }
-
+const formItemLayoutWithOutLabel = {
+    wrapperCol: {
+        xs: { span: 24, offset: 0 },
+        sm: { span: 20, offset: 4 },
+    },
+}
 const normFile = (e: any) => {
     console.log('Upload event:', e)
     if (Array.isArray(e)) {
@@ -143,17 +147,62 @@ const PageSub1: React.FC = () => {
                 <Form.Item name="activityNum" label="活动总份数">
                     <Input placeholder="请输入活动总份数" />
                 </Form.Item>
-
-                <Form.Item
-                    name="upload"
-                    label="Upload"
-                    valuePropName="fileList"
-                    getValueFromEvent={normFile}
-                >
-                    <Upload name="logo" action="/upload.do" listType="picture">
-                        <Button icon={<UploadOutlined />}>Click to upload</Button>
-                    </Upload>
-                </Form.Item>
+                {/* <Form.List name="names">
+                    {(fields, { add, remove }) => {
+                        return (
+                            <div>
+                                {fields.map((field, index) => (
+                                    <Form.Item
+                                        {...(index === 0
+                                            ? formItemLayout
+                                            : formItemLayoutWithOutLabel)}
+                                        label={index === 0 ? 'Passengers' : ''}
+                                        required={false}
+                                        key={field.key}
+                                    >
+                                        <Form.Item
+                                            {...field}
+                                            validateTrigger={['onChange', 'onBlur']}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    whitespace: true,
+                                                    message: '请输入',
+                                                },
+                                            ]}
+                                            noStyle
+                                        >
+                                            <Input
+                                                placeholder="passenger name"
+                                                style={{ width: '60%' }}
+                                            />
+                                        </Form.Item>
+                                        {fields.length > 1 ? (
+                                            <MinusCircleOutlined
+                                                className="dynamic-delete-button"
+                                                style={{ margin: '0 8px' }}
+                                                onClick={() => {
+                                                    remove(field.name)
+                                                }}
+                                            />
+                                        ) : null}
+                                    </Form.Item>
+                                ))}
+                                <Form.Item>
+                                    <Button
+                                        type="dashed"
+                                        onClick={() => {
+                                            add()
+                                        }}
+                                        style={{ width: '60%' }}
+                                    >
+                                        <PlusOutlined /> Add field
+                                    </Button>
+                                </Form.Item>
+                            </div>
+                        )
+                    }}
+                </Form.List> */}
 
                 <div style={{ marginTop: 50 }}>
                     <Form.Item wrapperCol={{ span: 3, offset: 9 }}>
