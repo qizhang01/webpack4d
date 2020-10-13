@@ -8,7 +8,7 @@ export interface IMenuNav {
 
 export const menuNav: IMenuNav[] = [
     {
-        title: '赠险',
+        title: '赠险相关',
         children: [
             {
                 title: '中台赠险配置',
@@ -30,9 +30,17 @@ export const menuNav: IMenuNav[] = [
     },
     {
         title: '开发规范',
-        uri: RouteUri.PageSub5,
+        uri: RouteUri.devDocument,
     },
-
+    {
+        title: '睿康相关',
+        children: [
+            {
+                title: '睿康配置',
+                uri: RouteUri.rkConfig,
+            },
+        ],
+    },
     {
         title: '权限控制',
         uri: RouteUri.Home,

@@ -13,4 +13,6 @@ export enum RouteUri {
 
     NotFound = '*',
     NotAuth = '/root/auth',
+    rkConfig = '/root/rkconfig',
+    devDocument = '/devdocument',
 }

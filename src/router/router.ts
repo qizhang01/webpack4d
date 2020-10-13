@@ -13,6 +13,12 @@ export const routes: RouteInterface[] = [
         name: 'login',
     },
     {
+        path: RouteUri.devDocument,
+        component: loadable(() => import('@/pages/devDocument')),
+        exact: true,
+        name: 'devDocument',
+    },
+    {
         path: RouteUri.Root,
         component: loadable(() => import('@/pages/root')),
         name: 'root',
@@ -59,6 +65,11 @@ export const routes: RouteInterface[] = [
                     {
                         path: RouteUri.NotAuth,
                         component: loadable(() => import('@/pages/status/no-auth')),
+                        exact: true,
+                    },
+                    {
+                        path: RouteUri.rkConfig,
+                        component: loadable(() => import('@/pages/rkconfig/sub1')),
                         exact: true,
                     },
                 ],

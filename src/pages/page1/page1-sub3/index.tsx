@@ -181,6 +181,13 @@ const PageSub: React.FC = () => {
                     <Input placeholder="请输入代理人经理姓名" />
                 </Form.Item>
                 <Form.Item
+                    name="Start_Date"
+                    label="开始日期"
+                    rules={[{ type: 'object', required: true, message: '请选择活动开始日期' }]}
+                >
+                    <DatePicker />
+                </Form.Item>
+                <Form.Item
                     name="End_Date"
                     label="结束日期"
                     rules={[{ type: 'object', required: true, message: '请选择活动结束日期' }]}

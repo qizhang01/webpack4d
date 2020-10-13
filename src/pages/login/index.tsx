@@ -2,6 +2,8 @@ import React, { useReducer } from 'react'
 import { Input, Button } from 'antd'
 import { Auth } from '@/auth'
 import { RouteUri } from '@/router/config'
+import { useHistory } from 'react-router-dom'
+
 import './index.less'
 
 type Account = {
@@ -55,6 +57,8 @@ const useAccount = (props: FormData) => {
         const date = new Date()
         Auth.setAuth(date.valueOf())
         setLoading()
+        let history = useHistory()
+        history.push('/root/page-sub1')
     }
 
     return { formData, setAccount: { setUsername, setPassword, onSubmit } }
