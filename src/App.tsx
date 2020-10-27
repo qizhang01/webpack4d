@@ -1,7 +1,5 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { Provider } from 'mobx-react'
-import { stores, StoresContext } from '@/store'
 import { RenderRoutes } from '@/router/RenderRoutes'
 import { routes } from '@/router/router'
 import { Loading } from '@/assets/images'
