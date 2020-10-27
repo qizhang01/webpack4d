@@ -15,9 +15,7 @@ import {
 } from 'antd'
 import { MinusCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons'
 import { Panel } from '@/components/Panel'
-import province from '@/enum/province'
-import cardType from '@/enum/cardType'
-const { Option } = Select
+import commonFetch from '@/ajax/index'
 
 const formItemLayout = {
     labelCol: { span: 4 },
@@ -38,8 +36,22 @@ const normFile = (e: any) => {
 }
 
 const PageSub1: React.FC = () => {
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values)
+    const onFinish = async (values: any) => {
+        const { activityNum, saleAgency, client } = values
+        const param = {
+            ...values,
+            client: client ? client : 'GW',
+            saleAgency: saleAgency ? saleAgency : '上海总部',
+        }
+        if (activityNum) {
+            param['overridden'] = { activityNum }
+        }
+        const result = await commonFetch(
+            '/api/overridden/createOverriddenPlanInfo',
+            JSON.stringify(param),
+            'POST'
+        )
+        console.log(result)
     }
 
     return (
@@ -55,46 +67,7 @@ const PageSub1: React.FC = () => {
                 }}
             >
                 <Form.Item
-                    name="title"
-                    label="险种名称"
-                    rules={[
-                        {
-                            required: true,
-                            message: '请输入赠险险种名称',
-                        },
-                    ]}
-                >
-                    <Input placeholder="请输入赠险险种名称" />
-                </Form.Item>
-
-                <Form.Item
-                    name="planName"
-                    label="计划名称"
-                    rules={[
-                        {
-                            required: true,
-                            message: '请输入赠险计划名称',
-                        },
-                    ]}
-                >
-                    <Input placeholder="请输入赠险计划名称" />
-                </Form.Item>
-
-                <Form.Item
-                    name="name"
-                    label="险种编码"
-                    rules={[
-                        {
-                            required: true,
-                            message: '请输入险种编码',
-                        },
-                    ]}
-                >
-                    <Input placeholder="请输入险种编码" />
-                </Form.Item>
-
-                <Form.Item
-                    name="name"
+                    name="planCode"
                     label="计划编码"
                     rules={[
                         {
@@ -107,43 +80,51 @@ const PageSub1: React.FC = () => {
                 </Form.Item>
 
                 <Form.Item
-                    name="period"
-                    label="保障期限"
+                    name="activity"
+                    label="活动编码"
                     rules={[
                         {
                             required: true,
-                            message: '请输入保障期限',
+                            message: '请输入产品计划编码',
                         },
                     ]}
                 >
-                    <Input placeholder="请输入保障期限, 比如1年 90天等" />
+                    <Input placeholder="请输入赠险活动编码" />
                 </Form.Item>
 
                 <Form.Item
-                    name="ageSection"
-                    label="承保年龄"
+                    name="channel"
+                    label="主渠道"
                     rules={[
                         {
                             required: true,
-                            message: '请输入承保年龄',
+                            message: '请输入产品计划编码',
                         },
                     ]}
                 >
-                    <Input placeholder="请输入承保年龄" />
-                </Form.Item>
-
-                <Form.Item name="contorgin" label="子渠道">
-                    <InputNumber min={1} placeholder="请输入子渠道" />
-                </Form.Item>
-
-                <Form.Item label="主渠道来源" name="channel">
                     <InputNumber min={1} placeholder="请输入主渠道来源" />
                 </Form.Item>
 
-                <Form.Item name="maxNumber" label="限领分数(不填默认为一份)">
-                    <Input placeholder="请输入限领分数" />
+                <Form.Item
+                    name="subChannel"
+                    label="子渠道"
+                    rules={[
+                        {
+                            required: true,
+                            message: '请输入产品计划编码',
+                        },
+                    ]}
+                >
+                    <InputNumber min={1} placeholder="请输入子渠道" />
                 </Form.Item>
 
+                <Form.Item name="saleAgency" label="销售机构">
+                    <Input defaultValue="上海总部" />
+                </Form.Item>
+
+                <Form.Item name="client" label="客户端">
+                    <Input placeholder="请输入客户端" defaultValue="GW" />
+                </Form.Item>
                 <Form.Item name="activityNum" label="活动总份数">
                     <Input placeholder="请输入活动总份数" />
                 </Form.Item>

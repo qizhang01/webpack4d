@@ -10,19 +10,32 @@ module.exports = {
 	devServer: {
 		port: 7777,
 		host: 'localhost',
-		contentBase: path.join(__dirname, '../public'),
+		// contentBase: path.join(__dirname, '../public'),
 		watchContentBase: true,
-		compress: true,
-		historyApiFallback: true,
+		// compress: true,
+		// historyApiFallback: true,
 		hot: true,
-		clientLogLevel: 'error',
+		// clientLogLevel: 'error',
 		open: true,
-		overlay: false,
-		quiet: false,
-		noInfo: false,
-		watchOptions: {
-			ignored: /node_modules/
-		},
-		proxy: {}
+		// overlay: false,
+		// quiet: false,
+		// noInfo: false,
+		// watchOptions: {
+		// 	ignored: /node_modules/
+		// },
+		proxy: {
+			"/api": {
+					target: "http://129.11.9.16:1000/",
+					secure: false,
+					changeOrigin: true,
+					pathRewrite:{'^/api': ''}
+			},
+			"/qax":{
+				target: 'http://129.11.9.14:8752/',
+				secure: false,
+				changeOrigin: true,
+				pathRewrite:{'^/qax': ''}
+			}
+	  },
 	}
 };
