@@ -9,12 +9,13 @@
   margin: 5px;
 }
 .layout-return-button {
-  display: block;
-  width: 200px;
-  position: fixed;
-  bottom: 10px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 97%;
   left: 50%;
+  width: 180px;
 }
+
 .desc-content {
   margin-top: 20px;
   font-size: 18px;
@@ -28,4 +29,17 @@
 }
 .desc-content-item{
   line-height: 35px;
+}
+.ant-layout-content {
+  h1 {
+    font-weight: bolder;
+  }
+  position: relative;
+  padding: 10px;
+  .anticon-loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

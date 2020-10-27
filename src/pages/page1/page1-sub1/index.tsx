@@ -16,6 +16,7 @@ import {
 import { MinusCircleOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons'
 import { Panel } from '@/components/Panel'
 import commonFetch from '@/ajax/index'
+import { useHistory } from 'react-router-dom'
 
 const formItemLayout = {
     labelCol: { span: 4 },
@@ -34,28 +35,36 @@ const normFile = (e: any) => {
     }
     return e && e.fileList
 }
-
+const stl = {}
 const PageSub1: React.FC = () => {
+    const history = useHistory()
+
     const onFinish = async (values: any) => {
-        const { activityNum, saleAgency, client } = values
-        const param = {
-            ...values,
-            client: client ? client : 'GW',
-            saleAgency: saleAgency ? saleAgency : '上海总部',
-        }
-        if (activityNum) {
-            param['overridden'] = { activityNum }
-        }
-        const result = await commonFetch(
-            '/api/overridden/createOverriddenPlanInfo',
-            JSON.stringify(param),
-            'POST'
-        )
-        console.log(result)
+        toNextPage()
+        // const { activityNum, saleAgency, client } = values
+        // const param = {
+        //     ...values,
+        //     client: client ? client : 'GW',
+        //     saleAgency: saleAgency ? saleAgency : '上海总部',
+        // }
+        // if (activityNum) {
+        //     param['overridden'] = { activityNum }
+        // }
+        // const result = await commonFetch(
+        //     '/api/overridden/createOverriddenPlanInfo',
+        //     JSON.stringify(param),
+        //     'POST'
+        // )
+        // console.log(result)
+    }
+
+    function toNextPage() {
+        history.push({ pathname: '/root/page-sub3', state: { dimensionId: 123 } })
     }
 
     return (
         <Panel>
+            <span className="config-topic-text">基础选项配置</span>
             <Form
                 name="validate_other"
                 {...formItemLayout}

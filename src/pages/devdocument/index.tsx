@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Tree, Layout, Button } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
+import { Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
 import './index.less'
 import commonFetch from '@/ajax/index'
 import envConfig from '@/enum/env'
@@ -19,6 +21,9 @@ interface IMemoObject {
         solution: string
     }
 }
+let memo = {} as IMemoObject
+let expandedKey = [] as string[]
+
 const PageContext: React.FC = () => {
     const arr = [
         {
@@ -27,13 +32,12 @@ const PageContext: React.FC = () => {
             children: [] as any[],
         },
     ]
-    let memo = {} as IMemoObject
-    let expandedKey = [] as string[]
 
     const [content, setContent] = useState([] as any[])
     const [solution, setSolution] = useState([] as any[])
     const [treeData, setTreeData] = useState(arr)
     const [expandedKeys, setExpandedKeys] = useState(expandedKey)
+    const [isFetching, setIsFetching] = useState(false)
 
     const onSelect = (selectedKeys: any, info: any) => {
         const { pkRule } = info.node
@@ -45,7 +49,9 @@ const PageContext: React.FC = () => {
     }
 
     const fetchItemData = async (pkRule: string) => {
+        setIsFetching(true)
         const res = await commonFetch(`${envConfig.qax}/file/detail?pkRule=${pkRule}&language=9`)
+        setIsFetching(false)
         const { ruleDesc, solution } = res.detail
         memo[pkRule] = { ruleDesc, solution }
         parseRules(memo[pkRule])
@@ -111,11 +117,16 @@ const PageContext: React.FC = () => {
                 />
             </Sider>
             <Content>
-                {/* <iframe className="layout-devdocument-content" srcDoc={content}></iframe> */}
-                <h1>规则描述</h1>
-                <div className="desc-content">{content}</div>
-                <h3 style={{ marginTop: 20 }}>解决方案</h3>
-                <div className="desc-content">{solution}</div>
+                {isFetching ? (
+                    <LoadingOutlined style={{ fontSize: 36 }} spin />
+                ) : (
+                    <>
+                        <h1>规则描述</h1>
+                        <div className="desc-content">{content}</div>
+                        <h1 style={{ marginTop: 20 }}>解决方案</h1>
+                        <div className="desc-content">{solution}</div>
+                    </>
+                )}
                 <Button
                     type="primary"
                     className="layout-return-button"

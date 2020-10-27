@@ -17,6 +17,7 @@ import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
 import { Panel } from '@/components/Panel'
 import province from '@/enum/province'
 import cardType from '@/enum/cardType'
+import { useLocation } from 'react-router-dom'
 import './index.less'
 
 const { Option } = Select
@@ -39,6 +40,8 @@ const normFile = (e: any) => {
 }
 
 const PageSub: React.FC = () => {
+    const param = useLocation()
+
     const [isShow, setIsShow] = useState(false)
 
     const [isShowWeixin, setShowWeixin] = useState(false)
@@ -61,6 +64,7 @@ const PageSub: React.FC = () => {
 
     return (
         <Panel>
+            <span className="config-topic-text">详细选项配置</span>
             <Form
                 name="config-form"
                 {...formItemLayout}

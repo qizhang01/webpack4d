@@ -9,7 +9,7 @@ export const Panel: React.FC = props => {
                 background: '#fff',
                 padding: '20px 0',
                 height: '98%',
-                overflowY: 'scroll',
+                overflowY: 'auto',
             }}
         >
             {props.children}
