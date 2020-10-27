@@ -6,7 +6,7 @@ import { RenderRoutes } from '@/router/RenderRoutes'
 import { routes } from '@/router/router'
 import { Loading } from '@/assets/images'
 // import DynamicColor from 'dynamic-antd-theme'
-import '@/assets/style/theme.css'
+import '@/assets/style/theme.less'
 
 const App: React.FC = () => {
     const [loading, setLoading] = React.useState(true)
@@ -33,11 +33,7 @@ const App: React.FC = () => {
                 <img src={Loading} alt="" />
             </section>
 
-            <Provider {...stores}>
-                <StoresContext.Provider value={stores}>
-                    <Router>{RenderRoutes(routes, true)}</Router>
-                </StoresContext.Provider>
-            </Provider>
+            <Router>{RenderRoutes(routes, true)}</Router>
         </>
     )
 }

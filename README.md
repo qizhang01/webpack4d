@@ -1172,6 +1172,5 @@ module.exports = {
 
 ## 项目讲解
 
-- [hook、mobx+hook的使用](doc/react-hook.md)
 - [路由鉴权](doc/auth.md)
 - [主题替换](doc/theme.md)

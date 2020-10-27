@@ -27,7 +27,6 @@ module.exports = merge(webpackConfig, {
     devtool: 'cheap-module-eval-source-map',
     entry: {
         app: './src/index.tsx',
-        // vendor: ['react', 'react-dom', 'antd', 'mobx', 'mobx-react'] // 不变的代码分包
     },
     output: {
         filename: 'js/[name].bundle.js',

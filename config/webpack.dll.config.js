@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
     entry: {
-        vendor: ['react', "react-dom", "react-router-dom", "antd", "mobx", "mobx-react"]
+        vendor: ['react', "react-dom", "react-router-dom", "antd",]
     },
     output:{
         filename:'[name].dll.js',
